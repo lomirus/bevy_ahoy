@@ -89,7 +89,7 @@ struct Player;
 struct SpawnPlayer;
 
 fn spawn_player(
-    insert: On<Add, SpawnPlayer>,
+    insert: On<Add<SpawnPlayer>>,
     players: Query<Entity, With<Player>>,
     spawner: Query<&Transform>,
     camera: Single<Entity, With<Camera3d>>,
@@ -424,7 +424,7 @@ impl Npc {
         };
         let mesh = world
             .resource_mut::<Assets<Mesh>>()
-            .add(bevy::math::primitives::Cylinder::new(
+            .add(bevy::shape::Cylinder::new(
                 collider.as_cylinder().unwrap().radius,
                 collider.as_cylinder().unwrap().half_height * 2.0,
             ));

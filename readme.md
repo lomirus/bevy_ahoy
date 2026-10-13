@@ -39,6 +39,12 @@ This tradeoff allows Ahoy to fully define its own separate model of how a charac
 - [x] **Surface friction**: Set the friction differently on individual surfaces to make them slippery or extra grippy
 - [ ] **Ladders**: Walk or jump to a ladder to hold onto it, then move to climb up and down on it or jump to get off early. Step up the surface when you reach the end of the ladder.
 
+## Bevy 0.20 migration branch
+
+This branch targets Bevy 0.20 and the Avian Bevy 0.20 port pinned to commit `7a64746a2f257b00c63542b5cb9a0fac8ac579be` in `lomirus/avian`. Enhanced Input is pinned to its Bevy 0.20 migration commit. The core controller is used with `default-features = false`; the optional `pickup` integration and the third-party example dependencies still target Bevy 0.19 and are not part of this migration.
+
+The port uses `bevy_shape` for geometric primitives, supplies zero margin when querying the controller's geometric AABB, and preserves skipped-entity behavior with `QueryManyIter::matched()`. `SpeculativeCcd::ZERO` replaces `SpeculativeMargin::ZERO` for the kinematic controller.
+
 ## Usage
 
 ```rust

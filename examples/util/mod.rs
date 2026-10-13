@@ -231,7 +231,7 @@ fn reset_player_inner(
     camera_transform.rotation = Quat::IDENTITY;
 }
 
-fn tweak_camera(insert: On<Insert, Camera3d>, mut commands: Commands, assets: Res<AssetServer>) {
+fn tweak_camera(insert: On<Insert<Camera3d>>, mut commands: Commands, assets: Res<AssetServer>) {
     commands.entity(insert.entity).insert((
         EnvironmentMapLight {
             diffuse_map: assets.load("environment_maps/voortrekker_interior_1k_diffuse.ktx2"),
@@ -249,7 +249,7 @@ fn tweak_camera(insert: On<Insert, Camera3d>, mut commands: Commands, assets: Re
 }
 
 fn tweak_directional_light(
-    insert: On<Insert, DirectionalLight>,
+    insert: On<Insert<DirectionalLight>>,
     mut commands: Commands,
     directional_light: Query<(&Transform, &DirectionalLight), Without<Tweaked>>,
     tweaked: Query<Entity, With<Tweaked>>,

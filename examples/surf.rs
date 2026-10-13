@@ -128,7 +128,7 @@ struct Player;
 struct SpawnPlayer;
 
 fn spawn_player(
-    insert: On<Insert, SpawnPlayer>,
+    insert: On<Insert<SpawnPlayer>>,
     players: Query<Entity, With<Player>>,
     spawner: Query<&Transform>,
     camera: Single<Entity, With<Camera3d>>,
@@ -299,7 +299,7 @@ enum CollisionLayer {
 #[derive(Component, Default, Deref, DerefMut)]
 struct TimeText(Stopwatch);
 
-fn setup_time(_add: On<Add, Player>, mut commands: Commands) {
+fn setup_time(_add: On<Add<Player>>, mut commands: Commands) {
     commands.spawn((
         Node {
             justify_self: JustifySelf::Center,
